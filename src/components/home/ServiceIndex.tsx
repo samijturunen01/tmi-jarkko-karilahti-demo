@@ -15,6 +15,9 @@ export const servicePrice = (id: (typeof services)[number]['id']) => {
 /** Editorial service index – the hovered/focused row lights up its photo on desktop. */
 export function ServiceIndex() {
   const [active, setActive] = useState(0)
+  // Only the first preview loads up front; the rest are fetched once the visitor engages with the list
+  // (otherwise they compete with the hero photo for bandwidth).
+  const [primed, setPrimed] = useState(false)
 
   return (
     <section className="bg-paper py-20 lg:py-32" aria-labelledby="palvelut-otsikko">
@@ -28,7 +31,7 @@ export function ServiceIndex() {
           {/* Sticky preview (desktop) */}
           <div className="hidden lg:col-span-5 lg:block">
             <div className="sticky top-28 aspect-[4/5] overflow-hidden rounded-[28px] bg-ink-3">
-              {services.map((s, i) => (
+              {services.map((s, i) => (i === 0 || primed) && (
                 <Photo
                   key={s.id}
                   k={s.hero.key}
@@ -48,7 +51,7 @@ export function ServiceIndex() {
             </div>
           </div>
 
-          <ol className="border-t border-graphite/15 lg:col-span-7">
+          <ol className="border-t border-graphite/15 lg:col-span-7" onPointerEnter={() => setPrimed(true)} onFocus={() => setPrimed(true)}>
             {services.map((s, i) => (
               <li key={s.id} className="border-b border-graphite/15" data-reveal style={{ ['--d' as string]: i * 70 }}>
                 <Link
