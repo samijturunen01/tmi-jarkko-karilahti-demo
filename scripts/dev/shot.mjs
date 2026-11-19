@@ -6,7 +6,7 @@ const page = await browser.newPage({ viewport: { width: +w, height: +h }, device
 const errors = []
 page.on('console', (m) => m.type() === 'error' && errors.push(m.text()))
 page.on('pageerror', (e) => errors.push(String(e)))
-await page.goto(`http://127.0.0.1:4318/tmi-jarkko-karilahti-demo/${p}`, { waitUntil: 'networkidle' })
+await page.goto(`http://127.0.0.1:4327/tmi-jarkko-karilahti-demo/${p}`, { waitUntil: 'networkidle' })
 await page.waitForTimeout(+wait)
 if (full === '1') {
   // trigger reveals

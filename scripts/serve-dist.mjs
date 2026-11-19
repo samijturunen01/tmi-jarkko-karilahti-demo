@@ -7,7 +7,7 @@ import http from 'node:http'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
-const port = Number(process.argv[2] || 4318)
+const port = Number(process.argv[2] || 4327)
 const base = (process.env.VITE_BASE_PATH || '/tmi-jarkko-karilahti-demo/').replace(/\/$/, '')
 const root = path.resolve('dist')
 const types = {

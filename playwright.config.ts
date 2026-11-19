@@ -12,14 +12,14 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? 'github' : 'list',
   use: {
-    baseURL: process.env.LIVE_URL || 'http://127.0.0.1:4318',
+    baseURL: process.env.LIVE_URL || 'http://127.0.0.1:4327',
     trace: 'retain-on-failure',
   },
   webServer: process.env.LIVE_URL
     ? undefined
     : {
-        command: 'node scripts/serve-dist.mjs 4318',
-        url: 'http://127.0.0.1:4318/tmi-jarkko-karilahti-demo/',
+        command: 'node scripts/serve-dist.mjs 4327',
+        url: 'http://127.0.0.1:4327/tmi-jarkko-karilahti-demo/',
         reuseExistingServer: !process.env.CI,
       },
   projects: [

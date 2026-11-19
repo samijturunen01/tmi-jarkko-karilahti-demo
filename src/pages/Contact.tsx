@@ -10,6 +10,7 @@ export function Contact() {
   return (
     <>
       <PageIntro
+        crumbs={[{ to: '/yhteystiedot', label: 'Yhteystiedot' }]}
         eyebrow="Yhteystiedot"
         title="Pyydä tarjous tai kysy vapaata aikaa."
         lead="Täytä tarjouspyyntö, soita tai lähetä sähköpostia. Kerro auton merkki ja malli sekä mitä autollesi toivot."
@@ -100,7 +101,7 @@ export function Contact() {
             </div>
           </div>
 
-          <div id="tarjouspyynto" className="scroll-mt-28 lg:col-span-8">
+          <div id="tarjouspyynto" className="lg:col-span-8">
             <h2 className="display-m">Tarjouspyyntö</h2>
             <p className="mt-3 max-w-[60ch] text-steel">Kolme lyhyttä kohtaa. Valitut palvelut näkyvät hintoineen, joten tiedät suunnan jo ennen vastausta.</p>
             <div className="mt-6">
@@ -110,7 +111,7 @@ export function Contact() {
         </div>
       </section>
 
-      <section id="kartta" className="scroll-mt-24 bg-paper pb-20 lg:pb-28" aria-labelledby="kartta-otsikko">
+      <section id="kartta" className="bg-paper pb-20 lg:pb-28" aria-labelledby="kartta-otsikko">
         <div className="container-x">
           <h2 id="kartta-otsikko" className="display-m">
             Halli Salpakankaalla

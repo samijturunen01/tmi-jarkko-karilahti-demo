@@ -18,7 +18,7 @@ export function FeaturedRefs() {
         </Link>
       </div>
 
-      <ul className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:gap-6 sm:px-7 lg:px-[max(44px,calc((100vw-1320px)/2+44px))]">
+      <ul className="no-scrollbar mt-12 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-4 sm:scroll-px-7 sm:gap-6 sm:px-7 lg:scroll-px-[max(44px,calc((100vw-1320px)/2+44px))] lg:px-[max(44px,calc((100vw-1320px)/2+44px))]">
         {featured.map((p, i) => (
           <li key={p.id} className="w-[82vw] max-w-[400px] shrink-0 snap-start" data-reveal style={{ ['--d' as string]: i * 80 }}>
             <Link to={`/referenssit?auto=${p.id}`} className="group block rounded-[22px]">

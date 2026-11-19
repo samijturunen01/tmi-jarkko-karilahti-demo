@@ -51,6 +51,7 @@ export function Header() {
     }`
 
   return (
+    <>
     <header
       className={`on-dark sticky top-0 z-50 border-b transition-[background-color,border-color] duration-300 ${
         scrolled || open ? 'border-white/10 bg-ink/95 backdrop-blur-md' : 'border-transparent bg-ink'
@@ -111,53 +112,54 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div
-        id="mobiilivalikko"
-        hidden={!open}
-        className="fixed inset-x-0 bottom-0 top-[68px] z-50 overflow-y-auto bg-ink lg:hidden"
-      >
-        <nav aria-label="Mobiilivalikko" className="container-x flex min-h-full flex-col pb-10 pt-4">
-          <ul className="flex flex-col">
-            {nav.map((n, i) => (
-              <li key={n.to} className="border-b border-white/10">
-                <NavLink
-                  to={n.to}
-                  end={n.to === '/'}
-                  className={({ isActive }) =>
-                    `flex items-baseline justify-between py-4 font-display text-[2rem] font-[720] tracking-[-0.03em] ${
-                      isActive ? 'text-white' : 'text-fog'
-                    }`
-                  }
-                >
-                  {({ isActive }) => (
-                    <>
-                      <span className="flex items-center gap-3">
-                        {isActive && <span className="size-2.5 rounded-full bg-k" aria-hidden="true" />}
-                        {n.label}
-                      </span>
-                      <span className="num text-sm font-[500] text-fog/70" aria-hidden="true">
-                        0{i + 1}
-                      </span>
-                    </>
-                  )}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8 grid gap-3">
-            <Link to={quoteHref()} className="btn btn-primary w-full">
-              Pyydä tarjous
-            </Link>
-            <a href={company.phone.href} className="btn btn-ghost w-full text-white">
-              <Phone size={18} aria-hidden="true" /> Soita {company.phone.display}
-            </a>
-          </div>
-          <p className="mt-8 text-sm text-fog">
-            {company.address.street}, {company.address.postalCode} {company.address.city}
-          </p>
-        </nav>
-      </div>
     </header>
+      {/* Mobile menu – outside <header>: its backdrop-filter would otherwise contain this fixed panel */}
+    <div
+      id="mobiilivalikko"
+      hidden={!open}
+      className="on-dark fixed inset-0 z-40 overflow-y-auto bg-ink pt-[100px] lg:hidden"
+    >
+      <nav aria-label="Mobiilivalikko" className="container-x flex min-h-full flex-col pb-10 pt-4">
+        <ul className="flex flex-col">
+          {nav.map((n, i) => (
+            <li key={n.to} className="border-b border-white/10">
+              <NavLink
+                to={n.to}
+                end={n.to === '/'}
+                className={({ isActive }) =>
+                  `flex items-baseline justify-between py-4 font-display text-[2rem] font-[720] tracking-[-0.03em] ${
+                    isActive ? 'text-white' : 'text-fog'
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    <span className="flex items-center gap-3">
+                      {isActive && <span className="size-2.5 rounded-full bg-k" aria-hidden="true" />}
+                      {n.label}
+                    </span>
+                    <span className="num text-sm font-[500] text-fog/70" aria-hidden="true">
+                      0{i + 1}
+                    </span>
+                  </>
+                )}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-8 grid gap-3">
+          <Link to={quoteHref()} className="btn btn-primary w-full">
+            Pyydä tarjous
+          </Link>
+          <a href={company.phone.href} className="btn btn-ghost w-full text-white">
+            <Phone size={18} aria-hidden="true" /> Soita {company.phone.display}
+          </a>
+        </div>
+        <p className="mt-8 text-sm text-fog">
+          {company.address.street}, {company.address.postalCode} {company.address.city}
+        </p>
+      </nav>
+    </div>
+    </>
   )
 }

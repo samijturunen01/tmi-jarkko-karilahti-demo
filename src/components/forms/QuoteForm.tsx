@@ -182,11 +182,11 @@ export function QuoteForm() {
                   return (
                     <label
                       key={id}
-                      className={`inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border-[1.5px] px-4 py-2 text-[0.93rem] font-[600] transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-k ${
+                      className={`relative inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border-[1.5px] px-4 py-2 text-[0.93rem] font-[600] transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-k ${
                         on ? 'border-k bg-k text-white' : 'border-graphite/20 bg-chalk text-graphite hover:border-k'
                       }`}
                     >
-                      <input type="checkbox" className="sr-only" checked={on} onChange={() => toggleTopic(id)} />
+                      <input type="checkbox" className="absolute inset-0 size-full cursor-pointer appearance-none rounded-full opacity-0" checked={on} onChange={() => toggleTopic(id)} />
                       {on && <Check size={15} strokeWidth={3} aria-hidden="true" />}
                       {topicLabel(id)}
                       {p && <span className={`num font-[500] ${on ? 'text-white/80' : 'text-steel'}`}>{formatPrice(p, { addon: !!p.addonOf })}</span>}

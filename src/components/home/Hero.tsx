@@ -177,18 +177,18 @@ export function Hero() {
               <Phone size={15} aria-hidden="true" /> {company.phone.display}
             </a>
           </p>
-          <dl className="mt-10 grid max-w-xl grid-cols-3 gap-4 border-t border-white/10 pt-6 text-[0.86rem]">
+          <dl className="mt-10 grid max-w-xl grid-cols-3 gap-3 border-t border-white/10 pt-6 text-[0.82rem] sm:gap-4 sm:text-[0.86rem]">
             <div>
               <dt className="text-fog">Toiminut</dt>
-              <dd className="num mt-1 font-display text-xl font-[700] text-white">vuodesta {company.foundedYear}</dd>
+              <dd className="num mt-1 font-display text-[1.02rem] font-[700] leading-tight text-white sm:text-xl">vuodesta {company.foundedYear}</dd>
             </div>
             <div>
               <dt className="text-fog">Referensseissä</dt>
-              <dd className="num mt-1 font-display text-xl font-[700] text-white">{vehicleCount} autoa</dd>
+              <dd className="num mt-1 font-display text-[1.02rem] font-[700] leading-tight text-white sm:text-xl">{vehicleCount} autoa</dd>
             </div>
             <div>
               <dt className="text-fog">Halli</dt>
-              <dd className="mt-1 font-display text-xl font-[700] text-white">Salpakangas</dd>
+              <dd className="mt-1 font-display text-[1.02rem] font-[700] leading-tight text-white sm:text-xl">Salpakangas</dd>
             </div>
           </dl>
         </div>

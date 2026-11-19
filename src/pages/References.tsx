@@ -38,6 +38,7 @@ export function References() {
   return (
     <>
       <PageIntro
+        crumbs={[{ to: '/referenssit', label: 'Referenssit' }]}
         eyebrow="Referenssit"
         title="Ennen ja jälkeen – aidot kuvat tehdyistä töistä."
         lead={`${vehicleCount} autoa yrityksen omasta referenssigalleriasta: maalipinnan kunnostuksia, pinnoitteita, ajovaloumpioita ja sisätiloja. Kuvaukset ovat yrityksen omia.`}

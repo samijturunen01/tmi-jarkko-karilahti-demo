@@ -80,6 +80,10 @@
   [hidden] {
     display: none !important;
   }
+  /* Grid children may shrink below their content (scrollable chip rows, long prices). */
+  .grid > * {
+    min-width: 0;
+  }
 }
 
 @layer components {

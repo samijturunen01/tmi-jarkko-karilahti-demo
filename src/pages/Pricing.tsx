@@ -49,6 +49,7 @@ export function Pricing() {
   return (
     <>
       <PageIntro
+        crumbs={[{ to: '/hinnasto', label: 'Hinnasto' }]}
         eyebrow="Hinnasto"
         title="Hinnat näkyvillä – ei arvailua."
         lead="Kaikki hinnat suoraan yrityksen hinnastosta. Rastita palvelut, niin näet suuntaa-antavan kokonaishinnan ja voit lähettää valinnat tarjouspyyntönä."
@@ -80,8 +81,8 @@ export function Pricing() {
                       const on = picked.includes(id)
                       return (
                         <li key={id} className={`border-b border-graphite/12 ${p.addonOf ? 'pl-5 sm:pl-8' : ''}`}>
-                          <label className="group flex cursor-pointer items-start gap-4 py-5">
-                            <input type="checkbox" className="peer sr-only" checked={on} onChange={() => toggle(id)} />
+                          <label className="group relative flex cursor-pointer items-start gap-4 py-5">
+                            <input type="checkbox" className="peer absolute inset-0 size-full cursor-pointer appearance-none opacity-0" checked={on} onChange={() => toggle(id)} />
                             <span
                               aria-hidden="true"
                               className={`mt-0.5 grid size-7 shrink-0 place-items-center rounded-lg border-2 transition-colors peer-focus-visible:outline peer-focus-visible:outline-3 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-k ${

@@ -17,6 +17,7 @@ export function Services() {
   return (
     <>
       <PageIntro
+        crumbs={[{ to: '/palvelut', label: 'Palvelut' }]}
         eyebrow="Palvelut"
         title="Auton fiksaus Joensuussa – ulkoa ja sisältä."
         lead="Käsinpesusta keraamiseen pinnoitteeseen ja sisäpuhdistuksesta otsonointiin. Valitse palvelu, katso mitä siihen kuuluu ja mitä se maksaa."
