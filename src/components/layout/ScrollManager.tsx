@@ -1,7 +1,6 @@
 import { useLayoutEffect, useRef } from 'react'
 import { useLocation, useNavigationType } from 'react-router-dom'
 import { introState } from '../../lib/intro'
-import { ScrollTrigger } from '../../lib/motion'
 
 const positions = new Map<string, number>()
 const useIsoLayoutEffect = typeof window === 'undefined' ? () => {} : useLayoutEffect
@@ -58,10 +57,7 @@ export function ScrollManager() {
       }
       const y = saved ?? 0
       window.scrollTo({ top: y, left: 0, behavior: 'instant' })
-      requestAnimationFrame(() => {
-        ScrollTrigger.refresh()
-        window.scrollTo({ top: y, left: 0, behavior: 'instant' })
-      })
+      requestAnimationFrame(() => window.scrollTo({ top: y, left: 0, behavior: 'instant' }))
       return
     }
 
@@ -72,7 +68,6 @@ export function ScrollManager() {
     // Same page with only a query change (filters, lightbox) keeps its position.
     if (samePage && searchChanged) return
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-    requestAnimationFrame(() => ScrollTrigger.refresh())
   }, [location.pathname, location.search, location.hash, location.key, navType])
 
   return null
@@ -92,9 +87,6 @@ function scrollToHashAfterLayout(hash: string, samePage: boolean) {
   }
   scrollToHash(hash)
   requestAnimationFrame(() =>
-    requestAnimationFrame(() => {
-      ScrollTrigger.refresh()
-      scrollToHash(hash)
-    }),
+    requestAnimationFrame(() => scrollToHash(hash)),
   )
 }

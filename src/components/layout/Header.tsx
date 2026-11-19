@@ -59,7 +59,7 @@ export function Header() {
     >
       <div className="container-x flex h-[68px] items-center justify-between gap-4 lg:h-[78px]">
         <Link to="/" aria-label={`${company.name} – etusivu`} className="-ml-1 shrink-0 rounded-md p-1">
-          <Logo tone="light" className="h-[44px] w-auto lg:h-[52px]" />
+          <Logo tone="light" img className="h-[44px] w-auto lg:h-[52px]" />
         </Link>
 
         <nav aria-label="Päävalikko" className="hidden lg:block">

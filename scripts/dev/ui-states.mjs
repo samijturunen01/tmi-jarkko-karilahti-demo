@@ -1,0 +1,16 @@
+import { chromium } from '@playwright/test'
+const out = process.argv[2]
+const b = await chromium.launch()
+const page = await b.newPage({ viewport: { width: 390, height: 844 } })
+await page.goto('http://127.0.0.1:4327/tmi-jarkko-karilahti-demo/palvelut/', { waitUntil: 'networkidle' })
+await page.getByRole('button', { name: 'Valikko' }).click()
+await page.waitForTimeout(300)
+await page.screenshot({ path: `${out}/menu-390.png` })
+await page.goto('http://127.0.0.1:4327/tmi-jarkko-karilahti-demo/referenssit/?auto=mitsubishi-lancer', { waitUntil: 'networkidle' })
+await page.waitForTimeout(800)
+await page.screenshot({ path: `${out}/lightbox-390.png` })
+const d = await b.newPage({ viewport: { width: 1440, height: 900 } })
+await d.goto('http://127.0.0.1:4327/tmi-jarkko-karilahti-demo/referenssit/?auto=umpiot-bmw', { waitUntil: 'networkidle' })
+await d.waitForTimeout(800)
+await d.screenshot({ path: `${out}/lightbox-1440.png` })
+await b.close()

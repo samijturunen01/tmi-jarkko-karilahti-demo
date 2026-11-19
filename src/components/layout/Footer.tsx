@@ -13,7 +13,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
           <div>
             <Link to="/" aria-label={`${company.name} – etusivu`} className="inline-block rounded-md">
-              <Logo tone="light" className="h-[84px] w-auto" />
+              <Logo tone="light" img className="h-[84px] w-auto" />
             </Link>
             <p className="mt-6 max-w-xs font-display text-xl font-[650] tracking-[-0.02em] text-white">
               {company.tagline}.

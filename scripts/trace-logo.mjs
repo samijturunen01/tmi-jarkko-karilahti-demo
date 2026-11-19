@@ -95,7 +95,7 @@ async function trace(mask) {
   )
   const d = /d="([^"]+)"/.exec(svg)[1]
   // Scale back to 1× coordinates (viewBox = original pixel grid) and round.
-  return d.replace(/-?\d+(\.\d+)?/g, (v) => String(Math.round((Number(v) / S) * 100) / 100))
+  return d.replace(/-?\d+(\.\d+)?/g, (v) => String(Math.round((Number(v) / S) * 10) / 10))
 }
 
 const paths = {}

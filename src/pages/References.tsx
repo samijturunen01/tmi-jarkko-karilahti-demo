@@ -194,11 +194,6 @@ function Lightbox({ project, onClose }: { project: Project; onClose: () => void 
         <div className="relative flex min-h-0 flex-1 items-center justify-center p-3 pt-16 lg:p-10">
           <figure className="relative m-0 flex h-full w-full items-center justify-center">
             <Photo key={shot.key} k={shot.key} alt={shot.alt} sizes="(min-width: 1024px) 70vw, 100vw" loading="eager" className="max-h-full w-auto max-w-full rounded-[14px] object-contain" />
-            {shot.stage && (
-              <span className={`absolute left-3 top-3 rounded-full px-3 py-1.5 text-[0.78rem] font-[700] uppercase tracking-[0.12em] ${shot.stage === 'ennen' ? 'bg-ink/85' : 'bg-k'}`}>
-                {shot.stage === 'ennen' ? 'Ennen' : 'Jälkeen'}
-              </span>
-            )}
           </figure>
           {n > 1 && (
             <>
@@ -217,8 +212,13 @@ function Lightbox({ project, onClose }: { project: Project; onClose: () => void 
             {project.title}
           </h2>
           {project.text && <p className="mt-3 text-[0.97rem] text-fog">{project.text}</p>}
-          <p className="num mt-4 text-[0.88rem] text-fog" aria-live="polite">
+          <p className="num mt-4 flex items-center gap-2 text-[0.88rem] text-fog" aria-live="polite">
             Kuva {i + 1} / {n}
+            {shot.stage && (
+              <span className={`rounded-full px-2.5 py-1 text-[0.72rem] font-[700] uppercase tracking-[0.12em] text-white ${shot.stage === 'ennen' ? 'bg-white/15' : 'bg-k'}`}>
+                {shot.stage === 'ennen' ? 'Ennen' : 'Jälkeen'}
+              </span>
+            )}
           </p>
           {n > 1 && (
             <ul className="mt-3 grid grid-cols-4 gap-2 lg:grid-cols-3">

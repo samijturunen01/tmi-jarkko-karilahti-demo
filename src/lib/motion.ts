@@ -1,8 +1,4 @@
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger)
-}
-
-export { gsap, ScrollTrigger }
+// Only the GSAP core is needed (homepage intro). ScrollTrigger is intentionally not bundled.
+export { gsap }

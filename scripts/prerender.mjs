@@ -75,6 +75,11 @@ try {
     .filter(Boolean)
     .map((f) => `<link rel="preload" href="${base}assets/${f}" as="font" type="font/woff2" crossorigin />`)
 
+  // Homepage LCP: start the hero photo download in parallel with CSS/JS.
+  const sizes = JSON.parse(await fs.readFile('src/data/photoSizes.json', 'utf8'))
+  const heroSet = sizes['v90-front'].widths.map((w) => `${base}images/p/v90-front-${w}.webp ${w}w`).join(', ')
+  const heroPreload = `<link rel="preload" as="image" type="image/webp" fetchpriority="high" imagesrcset="${heroSet}" imagesizes="(min-width: 1024px) 46vw, 100vw" />`
+
   for (const meta of routes) {
     const route = meta.path
     const body = render(route, base)
@@ -116,6 +121,7 @@ try {
       : null
 
     const head = [
+      route === '/' ? heroPreload : '',
       ...fontPreloads,
       `<title>${esc(meta.title)}</title>`,
       `<meta name="description" content="${esc(meta.description)}" />`,
