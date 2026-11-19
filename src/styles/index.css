@@ -24,11 +24,24 @@
   --color-k-lite: #9aa0ff;
   --color-gleam: #eef2ff;
 
-  --font-display: 'Bricolage Grotesque Variable', 'Arial Narrow', system-ui, sans-serif;
-  --font-sans: 'Inter Tight Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Bricolage Grotesque Variable', 'Bricolage Fallback', system-ui, sans-serif;
+  --font-sans: 'Inter Tight Variable', 'Inter Tight Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-sweep: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Width-matched local fallbacks (measured: Bricolage ≈ 101.5 %, Inter Tight ≈ 95 % of Arial)
+   so text does not re-wrap – and shift the layout – when the web fonts arrive. */
+@font-face {
+  font-family: 'Bricolage Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica'), local('Roboto');
+  size-adjust: 101.5%;
+}
+@font-face {
+  font-family: 'Inter Tight Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica'), local('Roboto');
+  size-adjust: 95%;
 }
 
 @layer base {
@@ -319,7 +332,9 @@
   clip-path: inset(0 0 0 calc(var(--p) * 100%));
 }
 .hero-beam {
-  left: calc(var(--p) * 100% - 15%);
+  /* transform (not left) so the sweep never counts as a layout shift; 333.33 % = frame width / beam width */
+  left: -15%;
+  transform: translateX(calc(var(--p) * 333.333%)) skewX(-12deg);
   opacity: calc(min(1, var(--p) * 12) * min(1, (1 - var(--p)) * 9));
 }
 .hero-logo-part {

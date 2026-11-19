@@ -111,7 +111,7 @@ export function Hero() {
             {/* The inspection light */}
             <div
               aria-hidden="true"
-              className="hero-beam pointer-events-none absolute -inset-y-[10%] w-[30%] -skew-x-12 mix-blend-screen [background:linear-gradient(90deg,transparent,rgba(214,222,255,.08)_25%,rgba(240,244,255,.62)_50%,rgba(214,222,255,.08)_75%,transparent)]"
+              className="hero-beam pointer-events-none absolute -inset-y-[10%] w-[30%] mix-blend-screen [background:linear-gradient(90deg,transparent,rgba(214,222,255,.08)_25%,rgba(240,244,255,.62)_50%,rgba(214,222,255,.08)_75%,transparent)]"
             />
             <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/80 to-transparent" />
             <p className="absolute right-3 top-3 rounded-full bg-ink/70 px-3 py-1.5 text-[0.74rem] font-[600] text-white/90 backdrop-blur-md lg:right-5 lg:top-5">
