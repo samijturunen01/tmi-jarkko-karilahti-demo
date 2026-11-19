@@ -5,7 +5,13 @@
 - **Instructions:** `C:\VERKKOSIVUT\Prompt.md` (Master Prompt V2.0, not modified). No extra user instructions.
 - **Repository:** https://github.com/samijturunen01/tmi-jarkko-karilahti-demo
 - **Live demo:** https://samijturunen01.github.io/tmi-jarkko-karilahti-demo/
-- **Current phase:** 13 – deployment (see "Deployment status").
+- **Current phase:** 14 – handover. Deployed and verified 19.11.2026.
+
+## Deployment status
+
+GitHub Actions workflow (lint → build → Playwright → Pages) succeeded; live site verified: home/deep links 200,
+unknown URL → branded 404 with status 404, `noindex, nofollow` on every page, full Playwright suite passes against
+the live URL (`LIVE_URL=https://samijturunen01.github.io npm test`).
 
 ## Conversion strategy (summary)
 
@@ -57,7 +63,11 @@ node scripts/trace-logo.mjs  # re-vectorise the logo
 - Playwright: 97 tests (desktop 1440 + Pixel 7) – pages, navigation, scroll behaviour, intro, reduced motion,
   form validation/demo submit, price builder, before/after, lightbox, map, structured data, no tracking, axe
   WCAG 2.2 AA (serious/critical). All pass locally.
-- Manual screenshot review at 360 / 390 / 768 / 1024 / 1440 px.
+- Manual screenshot review at 360 / 390 / 768 / 1024 / 1440 px; no horizontal overflow on any page at those widths.
+- Lab performance on the live site (`node scripts/perf-lab.mjs <url>`; throttled 1.6 Mbit/s, 150 ms latency,
+  4× CPU on mobile – lab data, not real-user data): home LCP 2.8 s mobile / 3.0 s desktop, other pages
+  1.1–2.7 s, CLS ≤ 0.016 everywhere. Fixes made: beam animated with transform, width-matched fallback fonts,
+  deferred service-preview photos, hero preload, ScrollTrigger removed.
 
 ## Known issues / decisions
 
